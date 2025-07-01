@@ -1,0 +1,4 @@
+#!/bin/bash
+podman images | grep -q '^localhost/rdopkg' || exit 1
+podman run -it --rm --mount type=bind,src=$PWD,dst=/root,rw,relabel=shared localhost/rdopkg:latest $*
+
